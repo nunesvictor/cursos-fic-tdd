@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class TurmaCursoTest {
@@ -59,6 +60,7 @@ public class TurmaCursoTest {
     }
 
     @Test
+    @DisplayName("período de matrícula deve ser anterior ao do curso")
     public void periodoDeMatriculaDeveSerAnteriorAoCurso() {
         assertThrows(UnsupportedOperationException.class,
             this::getTurmaCursoComPeriodoInvalido);
@@ -66,12 +68,14 @@ public class TurmaCursoTest {
     }
 
     @Test
+    @DisplayName("deve exibir erro ao listar turma sem alunos matriculados")
     public void deveExibirErroAoListarAlunosDeTurmaVazia() {
         assertThrows(UnsupportedOperationException.class,
             getTurmaCursoComPeriodoValido()::getEstudantes);
     }
 
     @Test
+    @DisplayName("não deve exibir erro ao listar turma com alunos")
     public void naoDeveExibirErroAoListarTurmaNaoVazia() {
         var estudante = getEstudante();
         var dataMatricula = LocalDate.of(2022, 6, 10);

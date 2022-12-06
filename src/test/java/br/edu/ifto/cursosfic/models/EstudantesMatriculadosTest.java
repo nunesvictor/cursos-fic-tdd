@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class EstudantesMatriculadosTest {
@@ -44,6 +45,7 @@ public class EstudantesMatriculadosTest {
     }
 
     @Test
+    @DisplayName("não pode matricular sem vaga disponível")
     public void naoPodeMatricularSemVagaDisponivel() {
         var dataMatricula = LocalDate.of(2022, 6, 10);
         assertThrows(UnsupportedOperationException.class, () -> {
@@ -58,6 +60,7 @@ public class EstudantesMatriculadosTest {
     }
 
     @Test
+    @DisplayName("matricular estudante diminui as vagas da turma")
     public void matricularDiminuiVagasDisponiveis() {
         var dataMatricula = LocalDate.of(2022, 6, 10);
         var matricula = new EstudantesMatriculados(
@@ -67,6 +70,7 @@ public class EstudantesMatriculadosTest {
     }
 
     @Test
+    @DisplayName("não permite inscrições fora do período de matrícula")
     public void naoPermiteInscricaoForaDoPeriodoDeMatricula() {
         var antesPeriodo = LocalDate.of(2022, 5, 31);
         var aposPeriodo = LocalDate.of(2022, 7, 1);

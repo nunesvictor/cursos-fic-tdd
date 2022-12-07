@@ -2,12 +2,12 @@ package br.edu.ifto.cursosfic.models;
 
 import java.time.LocalDate;
 
-public class EstudantesMatriculados {
+public class EstudanteTurma {
     private final Estudante estudante;
-    private final TurmaCurso turmaCurso;
+    private final Turma turmaCurso;
     private final LocalDate dataMatricula;
 
-    public EstudantesMatriculados(Estudante estudante, TurmaCurso turmaCurso, LocalDate dataMatricula) {
+    public EstudanteTurma(Estudante estudante, Turma turmaCurso, LocalDate dataMatricula) {
         this.estudante = estudante;
         this.turmaCurso = turmaCurso;
         this.dataMatricula = dataMatricula;
@@ -44,7 +44,7 @@ public class EstudantesMatriculados {
         return estudante;
     }
     
-    public TurmaCurso getTurmaCurso() {
+    public Turma getTurmaCurso() {
         return turmaCurso;
     }
     

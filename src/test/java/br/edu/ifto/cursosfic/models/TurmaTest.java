@@ -10,7 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class TurmaCursoTest {
+public class TurmaTest {
     private Estudante getEstudante() {
         return new Estudante(
             "Aluno 1",
@@ -29,8 +29,8 @@ public class TurmaCursoTest {
         );
     }
 
-    private TurmaCurso getTurmaCurso(List<LocalDate> matriculasPeriod, List<LocalDate> aulasPeriod) {
-        return new TurmaCurso(
+    private Turma getTurmaCurso(List<LocalDate> matriculasPeriod, List<LocalDate> aulasPeriod) {
+        return new Turma(
             getCurso(),
             "IFTO", 
             40,
@@ -41,7 +41,7 @@ public class TurmaCursoTest {
         );
     }
     
-    private TurmaCurso getTurmaCursoComPeriodoInvalido() {
+    private Turma getTurmaCursoComPeriodoInvalido() {
         final List<LocalDate> matriculasPeriod = List.of(
             LocalDate.of(2022, 7, 1), LocalDate.of(2022, 7, 31));
         final List<LocalDate> aulasPeriod = List.of(
@@ -50,7 +50,7 @@ public class TurmaCursoTest {
         return getTurmaCurso(matriculasPeriod, aulasPeriod);
     }
 
-    private TurmaCurso getTurmaCursoComPeriodoValido() {
+    private Turma getTurmaCursoComPeriodoValido() {
         final List<LocalDate> matriculasPeriod = List.of(
             LocalDate.of(2022, 6, 1), LocalDate.of(2022, 6, 30));
             final List<LocalDate> aulasPeriod = List.of(
@@ -81,7 +81,7 @@ public class TurmaCursoTest {
         var dataMatricula = LocalDate.of(2022, 6, 10);
         var turmaCurso = getTurmaCursoComPeriodoValido();
 
-        new EstudantesMatriculados(
+        new EstudanteTurma(
             estudante, turmaCurso, dataMatricula);
         
         assertDoesNotThrow(turmaCurso::getEstudantes);

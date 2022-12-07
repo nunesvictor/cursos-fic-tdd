@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class TurmaCurso {
+public class Turma {
     private final Curso curso;
     private final String local;
     private final int vagas;
@@ -14,9 +14,9 @@ public class TurmaCurso {
     private LocalDate fimAulas;
     private LocalDate inicioMatriculas;
     private LocalDate fimMatriculas;
-    private final Set<EstudantesMatriculados> estudantesMatriculados;
+    private final Set<EstudanteTurma> estudantesMatriculados;
     
-    public TurmaCurso(Curso curso, String local, int vagas, LocalDate inicioAulas, LocalDate fimAulas,
+    public Turma(Curso curso, String local, int vagas, LocalDate inicioAulas, LocalDate fimAulas,
             LocalDate inicioMatriculas, LocalDate fimMatriculas) {
         
         this.curso = curso;
@@ -92,7 +92,7 @@ public class TurmaCurso {
         this.fimMatriculas = fimMatriculas;
     }
 
-    public Set<EstudantesMatriculados> getEstudantesMatriculados() {
+    public Set<EstudanteTurma> getEstudantesMatriculados() {
         return this.estudantesMatriculados;
     }
 

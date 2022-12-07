@@ -10,7 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class EstudantesMatriculadosTest {
+public class EstudanteTurmaTest {
     private Estudante getEstudante() {
         return new Estudante(
             "Aluno 1",
@@ -21,7 +21,7 @@ public class EstudantesMatriculadosTest {
         );
     }
 
-    private TurmaCurso getTurmaCurso(int vagas) {
+    private Turma getTurmaCurso(int vagas) {
         final List<LocalDate> matriculasPeriod = List.of(
             LocalDate.of(2022, 6, 1), LocalDate.of(2022, 6, 30));
         final List<LocalDate> aulasPeriod = List.of(
@@ -33,7 +33,7 @@ public class EstudantesMatriculadosTest {
             "Lorem ipsum dolor"
         );
 
-        return new TurmaCurso(
+        return new Turma(
             curso,
             "IFTO", 
             vagas,
@@ -49,12 +49,12 @@ public class EstudantesMatriculadosTest {
     public void naoPodeMatricularSemVagaDisponivel() {
         var dataMatricula = LocalDate.of(2022, 6, 10);
         assertThrows(UnsupportedOperationException.class, () -> {
-            new EstudantesMatriculados(
+            new EstudanteTurma(
                 getEstudante(), getTurmaCurso(0), dataMatricula);
         });
 
         assertDoesNotThrow(() -> {
-            new EstudantesMatriculados(
+            new EstudanteTurma(
                 getEstudante(), getTurmaCurso(1), dataMatricula);
         });
     }
@@ -63,7 +63,7 @@ public class EstudantesMatriculadosTest {
     @DisplayName("matricular estudante diminui as vagas da turma")
     public void matricularDiminuiVagasDisponiveis() {
         var dataMatricula = LocalDate.of(2022, 6, 10);
-        var matricula = new EstudantesMatriculados(
+        var matricula = new EstudanteTurma(
             getEstudante(), getTurmaCurso(1), dataMatricula);
         
         assertEquals(matricula.getTurmaCurso().getVagasDisponiveis(), 0);
@@ -77,15 +77,15 @@ public class EstudantesMatriculadosTest {
         var dentroPeriodo = LocalDate.of(2022, 6, 10);
         
         assertThrows(UnsupportedOperationException.class, () -> {
-            new EstudantesMatriculados(
+            new EstudanteTurma(
                 getEstudante(), getTurmaCurso(1), antesPeriodo);
         });
         assertThrows(UnsupportedOperationException.class, () -> {
-            new EstudantesMatriculados(
+            new EstudanteTurma(
                 getEstudante(), getTurmaCurso(1), aposPeriodo);
         });
         assertDoesNotThrow(() -> {
-            new EstudantesMatriculados(
+            new EstudanteTurma(
                 getEstudante(), getTurmaCurso(1), dentroPeriodo);
         });
     }

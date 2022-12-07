@@ -2,6 +2,7 @@ package br.edu.ifto.cursosfic.models;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Estudante {
@@ -10,7 +11,7 @@ public class Estudante {
     private LocalDate dataNascimento;
     private String endereco;
     private String emailInstitucional;
-    private List<Celular> celulares;
+    private final List<Celular> celulares;
 
     public Estudante(String nome, String matricula, LocalDate dataNascimento, String endereco, String email) {
         if (Period.between(dataNascimento, LocalDate.now()).getYears() < 15) {
@@ -22,6 +23,7 @@ public class Estudante {
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.emailInstitucional = email;
+        this.celulares = new ArrayList<>();
     }
 
     public Estudante() {
@@ -70,9 +72,5 @@ public class Estudante {
 
     public List<Celular> getCelulares() {
         return celulares;
-    }
-
-    public void setCelulares(List<Celular> celulares) {
-        this.celulares = celulares;
     }
 }

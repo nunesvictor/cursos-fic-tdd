@@ -1,8 +1,9 @@
 package br.edu.ifto.cursosfic.models;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class TurmaCurso {
     private final Curso curso;
@@ -13,7 +14,7 @@ public class TurmaCurso {
     private LocalDate fimAulas;
     private LocalDate inicioMatriculas;
     private LocalDate fimMatriculas;
-    private final List<EstudantesMatriculados> estudantesMatriculados;
+    private final Set<EstudantesMatriculados> estudantesMatriculados;
     
     public TurmaCurso(Curso curso, String local, int vagas, LocalDate inicioAulas, LocalDate fimAulas,
             LocalDate inicioMatriculas, LocalDate fimMatriculas) {
@@ -26,7 +27,7 @@ public class TurmaCurso {
         this.fimAulas = fimAulas;
         this.inicioMatriculas = inicioMatriculas;
         this.fimMatriculas = fimMatriculas;
-        this.estudantesMatriculados = new ArrayList<>();
+        this.estudantesMatriculados = new HashSet<>();
 
         if (!periodosDeMatriculaECursoSaoValidos()) {
             throw new UnsupportedOperationException("períodos de matrícula ou de curso inválidos");
@@ -91,7 +92,7 @@ public class TurmaCurso {
         this.fimMatriculas = fimMatriculas;
     }
 
-    public List<EstudantesMatriculados> getEstudantesMatriculados() {
+    public Set<EstudantesMatriculados> getEstudantesMatriculados() {
         return this.estudantesMatriculados;
     }
 
